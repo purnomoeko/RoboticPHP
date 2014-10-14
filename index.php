@@ -1,6 +1,6 @@
 <?php
 
-
+header("Content-Type: text");
 require_once "class/robot.php";
 require_once "class/viewport.php";
 
@@ -31,7 +31,7 @@ if ($handle) {
                 
             }
             elseif(trim($lineSpaceBreak[0]) == "REPORT"){
-                echo $robot->printReport()."<br />";
+                echo $robot->printReport()."\n";
             }
         }
         else if(count($lineSpaceBreak) > 1){
@@ -50,10 +50,16 @@ fclose($handle);
 
 
 
+if(isset($_GET['detail'])){
+    $viewportdata = $viewport->getViewPortData();
+    
+    for($x = 0; $x < count($viewportdata) ; $x++ ){
+        for($y=0;$y < count($viewportdata[$x]); $y++){
+            echo $viewportdata[$x][$y]."\n('$x','$y')\t\t";
+        }
+        echo "\n\n";
+        
+    }
+}
 
 
-
-echo "<pre>";
-print_r($robot->getPosition());
-print_r($viewport->getViewPortData());
-echo "</pre>";

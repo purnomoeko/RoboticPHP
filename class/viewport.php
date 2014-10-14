@@ -7,7 +7,10 @@ class Viewport{
     public function getViewPortData(){return $this->viewPortData;}
     public function setDimention($dimention=array(5,5)){$this->dimention = $dimention;}
     
-    
+    /*
+    * Set place where position of robot
+    * $robot = Robot Object
+    */
     public function setRobotPlace($robot){
         $positionRobot = $robot->getPosition();
         
@@ -24,7 +27,6 @@ class Viewport{
         
         $this->viewPortData[$positionRobot[0]][$positionRobot[1]] = $robot->name." - ".$positionRobot[2];
         $robot->setCurrentViewPort($this);
-        
     }
     
     

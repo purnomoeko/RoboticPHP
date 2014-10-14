@@ -16,22 +16,46 @@ class Robot{
         $this->position = $position;
     }
     
+    
+    
+    /*Class Constructor and define $viewPort dimentions
+     *
+     * for default viewport will be defined as x=5, y=5
+     *
+     * $dimention = array()
+    */
     function getPosition(){ return $this-> position;}
+    
+    
+    /*Set viewport object where the robot placed
+    $viewport = viewport object from class/viewport.php files
+    */
     function setCurrentViewPort($viewport){
         $this->viewport = $viewport;
     }
     
+    
+    /*
+    * Set current position of robot
+    * $position = array data that collect coordinate information 
+    */
     function setPosition($position = array(0, 0, 'north')){
         $this->position = $position;
         $this->position[2] = strtolower($position[2]);
         
     }
 
-    
-    function printReport($position = array()){
+    /*
+    * Print robot position information 
+    */
+    function printReport(){
         return $this->position[0].", ".$this->position[1].",".$this->position[2];
     }
     
+    
+    /*
+    * Move the robot object based on current direction 
+    */
     function move(){
         if(isset($this->viewport)){
             $direction = $this->position[2];
@@ -53,6 +77,9 @@ class Robot{
         }
     }
     
+    /*
+    * Turn right the robot, so robot direction will change.
+    */
     function turnRight(){
         $direction = $this->position[2];
         if($direction == "north"){
@@ -72,6 +99,9 @@ class Robot{
     }
     
     
+    /*
+    * Turn left the robot, so robot direction will change.
+    */
     function turnLeft(){
         $direction = $this->position[2];
         if($direction == "north"){

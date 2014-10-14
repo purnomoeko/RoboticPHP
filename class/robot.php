@@ -1,9 +1,10 @@
 <?php
-require_once "viewport.php";
+
 class Robot{
     
     protected $position = array();
-    private $viewPort;
+    public $name = "robot";
+    
     
     /*Class Constructor and define $viewPort dimentions
      *
@@ -11,14 +12,11 @@ class Robot{
      *
      * $dimention = array()
     */
-    public function __construct($dimention = array(5,5)){
-        $this->viewPort = new viewport($dimention);
-        $this->viewPort->createViewPort();
+    public function __construct($position = array(0, 0, 'north')){
+        $this->position = $position;
     }
     
-    function getPosition(){ return $position;}
-    function getViewPort() {return $viewPort;}
-    
+    function getPosition(){ return $this-> position;}
     
     
     function setPosition($position = array(0, 0, 'north')){
@@ -26,18 +24,14 @@ class Robot{
         
         $this->viewPortData[$position[0]][$position[1]]["robotDirection"] = $position[2];
     }
-    
-    function move(){
-        
-    }
-    
+
     
     function printReport($position = array()){
         return $position[0].", ".$position[1].",".$position[3];
     }
-
     
-    
-   
+    function move($viewport){
+        
+    }
     
 }

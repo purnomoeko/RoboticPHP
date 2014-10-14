@@ -1,15 +1,18 @@
 <?php
 
 
-require "class/robot.php";
+require_once "class/robot.php";
+require_once "class/viewport.php";
 
-$robot = new Robot(array(5,5));
 
+$viewport = new Viewport();
+
+$viewport->setDimention(array(5,5));
+$viewport->createViewPort();
+
+
+$robot = new Robot();
 
 $file = readfile("test/command.txt");
 
-print_r($file);
-echo "<pre>";
-print_r($robot->getViewPortData());
-echo "</pre>";
 $robot->setPosition();

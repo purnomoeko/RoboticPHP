@@ -28,5 +28,4 @@ or you can view full demo on this page http://128.199.179.70/robotic-php/
 * **Class/viewport.php** : viewport class
 * *index.php* --> instance of both class and testing unit
 * *test/command.txt* --> command to run the robot. Application will only accept "MOVE", "PLACE X,Y,Direction", "RIGHT", "LEFT" & "REPORT". You can change this file to test the apps. 
-
-
+* *index.php?detail=1* --> will show the viewport data.

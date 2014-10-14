@@ -13,6 +13,16 @@ $viewport->createViewPort();
 
 $robot = new Robot();
 
-$file = readfile("test/command.txt");
+//$file = readfile("test/command.txt");
 
-$robot->setPosition();
+$robot->setPosition(array(4,0,'north'));
+$viewport->setRobotPlace($robot);
+
+echo $robot->printReport();
+
+
+
+echo "<pre>";
+print_r($robot->getPosition());
+print_r($viewport->getViewPortData());
+echo "</pre>";

@@ -23,8 +23,8 @@ class Robot{
     
     function setPosition($position = array(0, 0, 'north')){
         $this->position = $position;
+        $this->position[2] = strtolower($position[2]);
         
-        $this->viewPortData[$position[0]][$position[1]]["robotDirection"] = $position[2];
     }
 
     

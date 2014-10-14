@@ -13,12 +13,43 @@ $viewport->createViewPort();
 
 $robot = new Robot();
 
-//$file = readfile("test/command.txt");
+$handle = fopen("test/command.txt", "r");
+if ($handle) {
+    while (($line = fgets($handle)) !== false) {
+        $lineSpaceBreak = explode(" ", $line);
+        if(count($lineSpaceBreak) == 1){
+                
+            if(trim($lineSpaceBreak[0]) == 'MOVE'){
+                $robot->move();
+            }
+            elseif(trim($lineSpaceBreak[0]) == "LEFT"){
+                $robot->turnLeft();
+                
+            }
+            elseif(trim($lineSpaceBreak[0]) == "RIGHT"){
+                $robot->turnRight();
+                
+            }
+            elseif(trim($lineSpaceBreak[0]) == "REPORT"){
+                echo $robot->printReport()."<br />";
+            }
+        }
+        else if(count($lineSpaceBreak) > 1){
+            if($lineSpaceBreak[0] == "PLACE"){
+                $params = explode(",", $lineSpaceBreak[1]);
+                $robot->setPosition($params);
+                $viewport->setRobotPlace($robot);
+            }
+        }
+    }
+} else {
+    echo "ERROR OPEN FILE COMMAND!";
+} 
+fclose($handle);
 
-$robot->setPosition(array(4,0,'north'));
-$viewport->setRobotPlace($robot);
 
-echo $robot->printReport();
+
+
 
 
 
